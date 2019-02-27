@@ -22,8 +22,43 @@ import {mapGetters, mapActions} from 'vuex'
     methods:{
       ...mapActions(['updateData']),
       drawLine() {
-      let oMyChart = this.$echarts.init(document.getElementById("box"));
+        if(this.lastTenLists.length < 2){
+          this.$message({
+            message: '数据缺少，请在home页添加不同的数据',
+            type: 'warning'
+          });
+        }
+        let arr1=[],arr2=[],arr3=[],arr4=[],arr5=[],arr6=[];  
+        //创建该6个数组，并将10条数据的内部数组的值对于插入到各自的数组中，
+        //由于数据动态的，且格式是数组
+        for(let i=0;i<this.lastTenLists.length;i++){
+          this.lastTenLists[i].map((item,index)=>{
+            switch(index){
+              case 0:
+              arr1.push(item);
+              break;
+              case 1:
+              arr2.push(item);
+              break;
+              case 2:
+              arr3.push(item);
+              break;
+              case 3:
+              arr4.push(item);
+              break;
+              case 4:
+              arr5.push(item);
+              break;
+              case 5:
+              arr6.push(item);
+              break;
+            }
+          })
+        }
+        
+      let myChart = this.$echarts.init(document.getElementById("box"));
         var option = {
+          
                 backgroundColor: '#FBFBFB',
                 tooltip : {
                     trigger: 'axis'
@@ -66,7 +101,7 @@ import {mapGetters, mapActions} from 'vuex'
                         symbol:'none',
                         smooth: 0.2,
                         color:['gray'],
-                        data:[800, 300, 500, 800, 300, 600,500,600]
+                        data:arr1
                     },
                     {
                         name:this.initItem[1],
@@ -74,7 +109,7 @@ import {mapGetters, mapActions} from 'vuex'
                         symbol:'none',
                         smooth: 0.2,
                         color:['pink'],
-                        data:[600, 300, 400, 200, 300, 300,200,400]
+                        data:arr2
                     },
                     {
                         name:this.initItem[2],
@@ -82,7 +117,7 @@ import {mapGetters, mapActions} from 'vuex'
                         symbol:'none',
                         smooth: 0.2,
                         color:['red'],
-                        data:[455, 666, 777, 44, 333, 32,222,80]
+                        data:arr3
                     },
                     {
                         name:this.initItem[3],
@@ -90,7 +125,7 @@ import {mapGetters, mapActions} from 'vuex'
                         symbol:'none',
                         smooth: 0.2,
                         color:['blue'],
-                        data:[600, 300, 400, 200, 300, 300,200,400]
+                        data:arr4
                     },
                     {
                         name:this.initItem[4],
@@ -98,7 +133,7 @@ import {mapGetters, mapActions} from 'vuex'
                         symbol:'none',
                         smooth: 0.2,
                         color:['green'],
-                        data:[600, 300, 400, 200, 300, 300,200,400]
+                        data:arr5
                     },
                     {
                         name:this.initItem[5],
@@ -106,13 +141,13 @@ import {mapGetters, mapActions} from 'vuex'
                         symbol:'none',
                         smooth: 0.2,
                         color:['orange'],
-                        data:[600, 300, 400, 200, 300, 300,200,400]
+                        data:arr6
                     },
                 ]
             };
     
     
-        oMyChart.setOption(option);
+        myChart.setOption(option);
       },
     }
   }

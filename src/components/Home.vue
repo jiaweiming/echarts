@@ -5,8 +5,11 @@
       </el-row>
     <div class="update-data">
       <el-row type="flex" class="row-bg" justify="center">
+        <el-col :span="12"><div class="grid-content bg-purple"><span>请在数据刷新后点击存储，以防重复数据</span></div></el-col>
+      </el-row>
+      <el-row type="flex" class="row-bg" justify="center">
         <el-col :span="6"><div class="grid-content bg-purple"><span>{{time}}</span>秒后刷新</div></el-col>
-        <el-col :span="6"><div class="grid-content bg-purple-light"><el-button type='primary'>立即存储</el-button></div></el-col>
+        <el-col :span="6"><div class="grid-content bg-purple-light"><el-button @click="toHistory()" type='primary'>立即存储</el-button></div></el-col>
       </el-row>
     </div>
 
@@ -36,11 +39,18 @@ import {mapGetters, mapActions} from 'vuex'
       }
     },
     methods:{
-      ...mapActions(['updateData']),
+      ...mapActions(['updateData','sendDataToHistory']),
+      toHistory(){
+        this.$store.dispatch('sendDataToHistory');
+         this.$message({
+            message: '保存成功！',
+            type: 'success'
+          });
+      },
       drawLine() {
       let myChart = this.$echarts.init(document.getElementById('main'));
       myChart.setOption({
-        title: { text: '某淘宝店铺服装实时销量展示' },
+        title: { text: '动态数据展示---10秒刷新' },
         tooltip: {},
         xAxis: {
           data: this.initItem

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home.vue'
 import Save from '../components/save.vue'
-import Record from '../components/record.vue'
+import History from '../components/record.vue'
 
 Vue.use(Router);
 
@@ -20,14 +20,14 @@ export default new Router({
       name: 'home'
     },
     {
-      path: '/save',
+      path: '/latest',
       component: Save,
-      name: 'save'
+      name: 'latest'
     },
     {
-      path: '/record',
-      component: Record,
-      name: 'record'
+      path: '/history',
+      component: History,
+      name: 'history'
     },
   ],
   scrollBehavior (to, from, savedPosition) {

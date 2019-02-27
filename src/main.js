@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Vue from 'vue'
-import {Button,Row,Col,Main,Aside,Header,Footer} from 'element-ui'
+import {Button,Row,Col,Main,Aside,Header,Footer,Message} from 'element-ui'
 import App from './App.vue'
 import router from './router'
 import store from './vuex/stores'
@@ -20,6 +20,7 @@ axios.interceptors.response.use((config) => {
 axios.defaults.baseURL = 'http://zhengjinwei.top:3003'
 
 Vue.prototype.$echarts = echarts //引入echarts,挂载到Vue的原型上，其他组件可复用
+Vue.prototype.$message = Message //引入message,用作弹窗提醒
 
 Vue.config.productionTip = false;
 Vue.component(Button.name, Button);

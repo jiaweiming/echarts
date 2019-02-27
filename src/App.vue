@@ -2,8 +2,8 @@
   <div id="app">
     <el-row>
     <el-col :span="8"><div class="grid-content bg-purple-dark"><router-link active-class="actived" :to="'/home'">首页</router-link></div></el-col>
-    <el-col :span="8"><div class="grid-content bg-purple-dark"><router-link active-class="actived" :to="'/save'">存储页</router-link></div></el-col>
-    <el-col :span="8"><div class="grid-content bg-purple-dark"><router-link active-class="actived" :to="'/record'">记录页</router-link></div></el-col>
+    <el-col :span="8"><div class="grid-content bg-purple-dark"><router-link active-class="actived" :to="'/latest'">存储页</router-link></div></el-col>
+    <el-col :span="8"><div class="grid-content bg-purple-dark"><router-link active-class="actived" :to="'/history'">历史页</router-link></div></el-col>
   </el-row>
     <router-view></router-view>
   </div>

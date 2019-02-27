@@ -24,7 +24,8 @@ import {mapGetters, mapActions} from 'vuex'
       drawLine() {
       let myChart = this.$echarts.init(document.getElementById('save'));
       myChart.setOption({
-      series : [
+        title: { text: '数据展示---最新的一条' },
+        series : [
           {
               name: '实时情况',
               type: 'pie',
@@ -46,7 +47,7 @@ import {mapGetters, mapActions} from 'vuex'
 </script>
 <style lang="scss">
   #save{
-    width:600px;
+    width:100%;
     height:340px
   }
 </style>
